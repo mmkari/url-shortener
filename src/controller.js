@@ -16,17 +16,29 @@ module.exports = {
     shortened
       .save()
       .then((shortened) => {
-        res.status(200).json(shortened);
+        res.status(200).send(hashed);
       })
-      .catch((err) => {
-        res.status(400).send("url shortening failed");
+      .catch(() => {
+        res.status(400).send();
       });
   },
 
   findById: function (req, res) {
     const id = req.params.id;
-    console.log("FINDING original for ID", id);
 
-    res.send("ORIGINAL URL");
+    Shortened.findOne({
+      hash: id,
+    })
+      .exec()
+      .then((doc) => {
+        if (doc) {
+          res.status(200).send(doc.original);
+        } else {
+          res.status(404).send();
+        }
+      })
+      .catch(() => {
+        res.status(500).send();
+      });
   },
 };
