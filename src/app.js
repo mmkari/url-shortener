@@ -9,7 +9,8 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app
-  .get("/", (req, res) => {
+  .get("/:id", (req, res) => {
+    console.log("Req params", req.params);
     res.send("Hello");
   })
   .post("/", (req, res) => {
