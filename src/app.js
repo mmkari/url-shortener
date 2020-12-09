@@ -6,6 +6,7 @@ const app = express();
 const port = 3000;
 
 const router = require("./router");
+require("./models"); // connect to DB
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
