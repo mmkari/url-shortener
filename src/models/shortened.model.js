@@ -9,7 +9,7 @@ let Shortened = new Schema({
   },
   createdAt: {
     type: Date,
-    expires: 60,
+    expires: "7d",
     default: Date.now,
   },
 });

@@ -5,6 +5,7 @@ mongoose
   .connect(process.env.MONGODB_URI || URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
   })
   .catch((error) => handleError(error));
 
