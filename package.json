@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mmkari/url-shortener#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "object-hash": "^2.0.3"
