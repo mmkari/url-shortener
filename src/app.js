@@ -1,18 +1,16 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-
-const app = express();
-const port = 80;
-
 const router = require("./router");
 require("./models"); // connect to DB
 
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
+const createApp = () => {
+  const app = express();
+  app.use(cors());
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use("/", router);
 
-app.use("/", router);
+  return app;
+};
 
-app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
-});
+module.exports = createApp;
