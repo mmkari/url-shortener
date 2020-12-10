@@ -1,5 +1,6 @@
 const hash = require("object-hash");
 let Shortened = require("./models/shortened.model");
+const URL_BASE = "http://localhost";
 
 module.exports = {
   create: function (req, res) {
@@ -16,7 +17,7 @@ module.exports = {
     shortened
       .save()
       .then((shortened) => {
-        res.status(200).send(hashed);
+        res.status(200).send(`${URL_BASE}/${hashed}`);
       })
       .catch(() => {
         res.status(400).send();
