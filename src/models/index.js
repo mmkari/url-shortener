@@ -34,14 +34,16 @@ const dropDatabase = async () => {
   }
 };
 
-// Log any errors after initial connection
-mongoose.connection.on("error", (error) => {
-  console.log("Database connection error:", error);
-});
+if (process.env.NODE_ENV !== "test") {
+  // Log any errors after initial connection
+  mongoose.connection.on("error", (error) => {
+    console.log("Database connection error:", error);
+  });
 
-// Log when connected to DB
-mongoose.connection.once("open", () => {
-  console.log("Connected to Database");
-});
+  // Log when connected to DB
+  mongoose.connection.once("open", () => {
+    console.log("Connected to Database");
+  });
+}
 
 module.exports = { createConnection, closeConnection, dropDatabase };
